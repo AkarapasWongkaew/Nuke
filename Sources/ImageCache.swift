@@ -180,10 +180,10 @@ final class Cache<Key: Hashable, Value> {
         #if os(iOS) || os(tvOS)
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(removeAll),
-                           name: UIApplication.didReceiveMemoryWarningNotification,
+                           name: NSNotification.Name.UIApplicationDidReceiveMemoryWarning,
                            object: nil)
         center.addObserver(self, selector: #selector(didEnterBackground),
-                           name: UIApplication.didEnterBackgroundNotification,
+                           name: NSNotification.Name.UIApplicationDidEnterBackground,
                            object: nil)
         #endif
     }

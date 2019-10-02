@@ -274,7 +274,7 @@ extension ImageProcessor {
         }
 
         public func process(image: Image, context: ImageProcessingContext?) -> Image? {
-            let filter = CIFilter(name: name, parameters: parameters)
+            let filter = CIFilter(name: name, withInputParameters: parameters)
             return CoreImageFilter.apply(filter: filter, to: image)
         }
 
@@ -282,7 +282,7 @@ extension ImageProcessor {
 
         /// A default context shared between all Core Image filters. The context
         /// has `.priorityRequestLow` option set to `true`.
-        public static var context = CIContext(options: [.priorityRequestLow: true])
+        public static var context = CIContext()
 
         public static func apply(filter: CIFilter?, to image: UIImage) -> UIImage? {
             guard let filter = filter else {
@@ -333,7 +333,7 @@ extension ImageProcessor {
 
         /// Applies `CIGaussianBlur` filter to the image.
         public func process(image: Image, context: ImageProcessingContext?) -> Image? {
-            let filter = CIFilter(name: "CIGaussianBlur", parameters: ["inputRadius": radius])
+            let filter = CIFilter(name: "CIGaussianBlur", withInputParameters: ["inputRadius": radius])
             return CoreImageFilter.apply(filter: filter, to: image)
         }
 
