@@ -49,11 +49,11 @@ public struct ImageEncodingContext {
 #if !os(macOS)
 extension ImageEncoder {
     static func pngData(from image: Image) -> Data? {
-        return UIImagePNGRepresentation(image)
+        return image.pngData()
     }
 
     static func jpegData(from image: Image, compressionQuality: CGFloat) -> Data? {
-        return UIImageJPEGRepresentation(image, compressionQuality)
+        return image.jpegData(compressionQuality: compressionQuality)
     }
 }
 #else
